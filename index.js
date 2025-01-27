@@ -84,20 +84,21 @@ app.get("/",(req,res)=>{
 
 // Task 3: Set up the route handler for /mens which sends back category.ejs with the men's category object
 
-app.get("/",(req,res)=>{
-  res.render("category.ejs",inventory[0].category[0])
+app.get("/mens",(req,res)=>{
+  res.render("category.ejs",inventory[0])
 })
 
 // Task 4: Plug in the values in category.ejs to get the page working
 // PINK ONLY: Set up a route handler for /womens to pass in similar data for women's
 app.get("/womens",(req,res)=>{
-  res.render("category.ejs",inventory[1].category[1])
+  res.render("category.ejs",inventory[1])
 })
 
 
 // Task 5: Set up the route handler for /item/0 which sends back the first item in product.ejs
-app.get("/item/0",(req,res)=>{
-  res.render("product.ejs",inventory[0].items[0])
+app.get("/item/:path",(req,res)=>{
+  const path = req.params.path
+  res.render("product.ejs",inventory[0].items[path])
 })
 
 
